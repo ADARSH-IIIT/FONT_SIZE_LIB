@@ -17,7 +17,7 @@ function SET_FONT_SIZE(element, currentwidth, arraydata) {
 
         worker.onmessage = function (event) {
             const { activeindex } = event.data;
-            console.log(activeindex, 'main.js');
+            // console.log(activeindex, 'main.js');
 
             if (activeindex !== -1) {
                 setfont(element, currentwidth ,  arraydata[activeindex]);
@@ -48,7 +48,7 @@ function setfont(element, currentwidth  , data) {
             const [sw, ew, sf, ef] = data;
             element.style.fontSize = ((currentwidth - sw) / (ew - sw)) * (ef - sf) + sf + 'px';
 
-            console.log(  "new font" , ((currentwidth - sw) / (ew - sw)) * (ef - sf) + sf,"px"  ,   currentwidth, "set font function mein h , remove before making cdn");
+            console.log(  "new font ==>" , ((currentwidth - sw) / (ew - sw)) * (ef - sf) + sf,"px"  ,  "current width==>" ,   currentwidth);
         }
 
     } catch (error) {
