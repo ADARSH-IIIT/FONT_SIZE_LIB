@@ -3,15 +3,19 @@
 
 
 
-function SET_FONT_SIZE(element, currentwidth, arraydata) {
-   
 
-    try {
-        // Call the solvingcors function to get the worker URL
-        const workerUrl = './worker.js'
 
-        // Create a new Worker using the Blob URL returned from solvingcors
-        const worker = new Worker(workerUrl);
+function SET_FONT_SIZE( element , currentwidth , arraydata ){
+
+
+    fetch('https://adarsh-iiit.github.io/Font_Size_Lib/worker.js')
+    .then(response => response.text())
+    .then(scriptText => {
+        const blob = new Blob([scriptText], { type: 'application/javascript' });
+        const blobUrl = URL.createObjectURL(blob);
+        const worker = new Worker(blobUrl);
+
+
 
         worker.postMessage({ data: arraydata, width: currentwidth });
 
@@ -24,12 +28,15 @@ function SET_FONT_SIZE(element, currentwidth, arraydata) {
             }
         };
 
-        
+        // Use the worker...
+        // console.log('Worker created successfully:', worker);
+    })
+    .catch(error => console.error('error at SET_FONT_SIZE function :', error));
 
-    } catch (error) {
-        console.log("error at setfont function in cdn-main.js", error);
-    }
+
+
 }
+
 
 
 
