@@ -1,0 +1,6 @@
+
+
+fetch krne pe cors error nhi aa rha tha
+
+
+but new worker create krme pe aa rha tha , to solvethis we have first fetched url then blob etc etc 
